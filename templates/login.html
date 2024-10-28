@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+  <html>
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>Login-section</title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <link rel="stylesheet" href="/static/css/home.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">   
+      </head>
+    <body>
+        <div class="icons">
+            <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+        <section class="horizontal">
+            <h1 id="title">Sign in</h1>
+            <form class="row" method="POST" action="{% url 'login'%}">
+              {% csrf_token %}
+                <div class="inputs" id="event">
+                    <div class="col">
+                      {{form}}
+                      <div id="toggleButton"><i class="fas fa-eye" onclick="myFunction()"></i></div>
+                    </div >
+                </div>
+                <div class="col1" >
+                    <button type="submit"  id="create"
+                    class="inline-btn">
+                    Login</button>
+                  </div>
+              <div class="text">Not registered yet, then click here.
+                <a class="link" href={% url 'register_student'%}>Register</a>
+                {{msg}}
+              </div>
+            </form>
+        </section>
+      <footer class="footer">
+        Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+    </footer>
+    <script src="{% static 'js/Home.js' %}"></script>
+    </body>
+    
+    </html>

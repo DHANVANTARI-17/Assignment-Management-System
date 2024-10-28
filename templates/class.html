@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    {%load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Teacher-section</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/list.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="title">
+            <span>{{subject}}</span>
+            <Batch:span>Batch:{{batch}}</Batch:span>
+           
+        </div>
+        <div class="icons">
+            <div id="user-btn" class="fa-solid fa-plus"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>  
+        </div>
+        </div>
+        <div class="box-container">
+            <h3 class="title">Add Assignment</h3>
+            <div class="box">
+                <form action="" method="post">
+                    <div>
+                        <label for="inputTitle">Title of the Assignment: </label>
+                        <input type="text" name="" id="inputTitle" placeholder="Enter title">
+                    </div>
+                    <div>
+                        <label for="inputDesri">Description of the assignment: </label>
+                        <input type="text" name="" id="inputDescri" placeholder="Enter Problem Statement">
+                    </div>
+                    <div>
+                        <label for="inputDate">Deadline: </label>
+                        <input type="date" name="" id="inputDate" placeholder="Set Deadline to upload the assignment:">
+                    </div>
+                    <div>
+                        <button type="submit" class="inline-btn">Add</button>
+                    </div>
+                </form>
+            </div>
+    </header>
+        <form action="{% url 'class_page' subject.id batch.id %}" method="POST" class="assignment-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form}}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Add</button>
+            </div>
+        </form>
+    <div class="tbl-container">
+        <div class="tbl">
+            <table>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Title</th>
+                    <th>Deadline</th>
+                    <th>Submissions</th>
+                    <th>Pendings</th>
+                    <th>Visit</th>
+                </tr>
+                {% for assignment in assignments %}
+                <tr>
+                    <td>{{assignment_id}}</td>
+                    <td>{{assignment.title}}</td>
+                    <td>{{assignment.deadline}}</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td><a href={% url "teacher-view" subject_id=subject.id batch_id=batch.id assignment_id=assignment.id%} class="inline-btn">Show</a></td>
+                </tr>
+                {% endfor %}
+            </table>    
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+    <footer class="footer">
+        Copyright &copy; <span> Made by PICTians</span> |All rights are reserved.!
+    </footer>
+    <script src="/static/js/list.js"></script>
+</body>
+
+</html>

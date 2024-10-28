@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>Home-section</title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <link rel="stylesheet" href="home.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">   
+      </head>
+    <body>
+      <div class="icons">
+        <div id="toggle-btn" class="fas fa-sun"></div>    
+      </div>
+    <section class="horizontal">
+      <h1 id="title">Register New!</h1>
+          <form class="row">
+          <class class="inputs" id="event">
+            <div class="col">
+              <label for="input firstname" class="form-label">First name:</label>
+              <input type="text" class="form-control" id="input firstname" placeholder="Enter your Username" required>
+            </div>
+            <div class="col">
+              <label for="input Lastname" class="form-label">Last name:</label>
+              <input type="text" class="form-control" id="input lastname" placeholder="Enter your last name" required>
+            </div>
+            <div class="col">
+              <label for="input Middlename" class="form-label">Middle name:</label>
+              <input type="text" class="form-control" id="inputMiddlename" placeholder="Enter middle name" required>
+            </div>
+            <div class="col">
+              <label for="inputEmail4" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Enter  college mail " required>
+            </div>
+            <div class="col">
+              <label for="input Username" class="form-label">Username:</label>
+              <input type="text" class="form-control" id="input Username" placeholder="Create Username"required>
+            </div>
+            <div class="col">
+              <label for="pass" class="form-label">Password:</label>
+              <input id="pass"
+              type="password"
+              name="pass"
+              placeholder="Enter Password"
+              required>          
+            </div>
+            <div class="col">
+              <label for="confirm_pass" class="form-label">Confirm Password:</label>
+              <input id="confirm_pass"
+              type="password"
+              name="confirm_pass"
+              placeholder="Confirm Password" required
+              onkeyup="validate_password()"> 
+            </div>
+            <div class="col">
+              <label for="inputMobileNumber" class="form-label">Mobile number:</label>
+              <input type="tel" class="form-control" id="inputMobileNumber" placeholder="+91 xxxxx xxxxx" required>
+            </div>
+            <div class="col">
+              <label for="file"  class="form-label">Profile Photo:</label>
+              <input id="file" class="form-contro" type="file" required>
+              <button style="background-color: white;border-radius: 0;">Upload</button>
+            </div>
+            <div class="col">
+              <label for="inputState" class="form-label">Department:</label>
+              <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>Computer Engineering</option>
+                <option>Electronics & telecommunication Engineering</option>
+                <option>Information Technology</option>
+              </select>
+            </div>
+          </class>
+                    </div>
+          <div class="col1" >
+            <span id="wrong_pass_alert"></span>
+            <button type="submit"  id="create"
+            class="inline-btn"
+            onclick="wrong_pass_alert()">Submit</button>
+          </div>
+          <div class="text">If Already registered then, click here.
+            <a href="login.html" class="link">Login</a>
+          </div>
+        </form>
+        <div id="message">
+          <h3>Password must contain the following:</h3>
+          <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+          <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+          <p id="number" class="invalid">A <b>number</b></p>
+          <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+      </section>
+      <footer class="footer">
+        Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+    </footer>
+    <script src="Home.js"></script>
+    </body>
+    
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+

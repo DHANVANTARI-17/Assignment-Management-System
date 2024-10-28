@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+  <html>
+    {% load static %}
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>View</title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <link rel="stylesheet" href="/static/css/list.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+         
+    </head>
+    <body>
+        <header class="header">
+          <div class="title">
+              <span>{{assignmment.subject}}</span>
+              <span>Batch:{{assignment.batch}}</span>
+             
+          </div>
+          <div class="icons">
+              <!-- <div id="user-btn" class="fa-solid fa-plus"></div> -->
+              <div id="toggle-btn" class="fas fa-sun"></div>  
+          </div>
+        </header>
+        <div class="tbl-container">
+          <div class="tbl">
+              <table>
+                  <tr>
+                      <th>Roll.No</th>
+                      <th>Student Name</th>
+                      <th>Assignment-status</th>
+                      <th>Evaluation-status</th>
+                      <th>Evaluate</th>
+                      <th>View</th>
+                  </tr>
+                  {% for assignment_submission in assignment_submissions%}
+                  <tr>
+                      <td>{{assignment_submission.student.roll_number}}</td>
+                      <td>{{ assignment_submission.student.first_name }} {{ assignment_submission.student.last_name }}</td>
+                    <td><span><i class="fas fa-check">
+                      {%if assignment_submission.submitted %}
+                        Completed
+                      {% else %}
+                        Pending
+                      {%endif%}
+                    </i></span></td>
+                    <td><span><i class="fas fa-check">
+                      {%if assignment_submission.evaluated%}
+                        Evaluated
+                      {% else %}
+                        Not evaluated
+                      {%endif%}
+                    </i></span></td>                   
+                    <td id="butn">View</td>
+                    <td>View</td>
+                    <td><span>
+                      {%if assignment_submission.evaluated %}
+                      {% else %}
+                      <form method="POST" action="{% url "teacher-view"  subject_id=assignment.subject.id batch_id=assignment.batch.id assignment_id=assignment.id%}">
+                        {% csrf_token %}
+                        {{form}}
+                        <input type="hidden" name="assignment_submission_id" value={{ assignment_submission.id }}>
+                        <button type=submit>Submit hrre</button>
+                      </form>
+                      {%endif%}
+                    </span></td>
+                  </tr>
+                  {%endfor%}
+              </table>    
+              </div>
+          </div>  
+        <section class="view">
+        <div>
+            <div class="box">
+              <div id="info"><h3>Title:</h3><span>{{assignment.title}}</span></div>
+              <div id="info"><h3>Description:</h3><span>{{assignment.description}}</span></div>
+              <h2>View Assignment</h2>
+              <a href="#" class="inline-btn">View file</a>    
+            </div>
+            <div class="box">
+            </div>
+        </div>
+        </section>
+      <footer class="footer">
+          Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+      </footer>
+      <script src="/static/js/Teacher-view.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+

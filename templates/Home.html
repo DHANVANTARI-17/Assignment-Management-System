@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>Home-section</title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <link rel="stylesheet" href="/static/css/home.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">   
+      </head>
+    <body class="homeBody">
+        <section class="homeHeader">
+                <div class="heading">
+                    <h1>Online Assignment Management system</h1>
+                </div>
+                <div class="container">
+                  <img src="/static/images/SUBMISSION-removebg-preview.png" alt="">
+                  <div class="text">
+                    <h2>Welcome to our Online Assignment Submission Platform</h2>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Narrow', Arial, sans-serif;">| Submit your assignments easily and securely |</h3>
+                    <a href="{% url 'login'%}" class="inline-btn" >Get Started</a>
+                  </div>
+                  
+                </div>
+                
+        </section>
+    <footer class="footer">
+        Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+    </footer>
+    <script src="/static/js/Home.js"></script>
+    </body>
+    
+    </html>

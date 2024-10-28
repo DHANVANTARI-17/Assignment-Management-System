@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load custom_filters %}
+{% load static %}
+  <html>
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>About</title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <link rel="stylesheet" href="/static/css/Dashboard.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+         
+      </head>
+      <body>
+      <header class="header">
+        <section class="flex">
+           <a href="/static/images/SUBMISSION-removebg-preview.png" class="logo">ASP</a>
+        
+        <form action="" method="post" class="search-form"> 
+            <input type="text" name="search-box" placeholder="search subject..." required maxlength="100">
+            <button type="submit" class=" fas fa-search"> </button>
+        </form>
+        <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+
+        <div class="profile">
+                <img src="/static/images/graduate.png" alt="">
+                <h3>{{user.name}}</h3>
+              <div class="info">
+                <span> Student</span>
+                <span>Computer SE I</span>
+              </div>
+                
+                <a href="profile.html" class="btn">View Profile</a>
+                <div class="flex-btn">
+                    <a href={% url "login"%} class="option-btn">Login</a>
+                    <a href={% url "register_student"%} class="option-btn">Register</a>
+                </div>
+        </div>
+    </section>
+      </header>
+      <div class="side-bar">
+
+        <div class="close-side-bar">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="profile">
+          <img src="/static/images/graduate.png" alt="">
+          <h3>{{user.name}}</h3>
+          <div class="info">
+            <span> Student</span>
+            <span>Computer SE I</span>
+            <span>Batch:G1</span>
+          </div>
+          <a href="profile.html"></a>
+        </div>
+        <nav class="navbar">
+          <a href={% url "home"%}><i class="fas fa-home" ></i><span>home</span></a>
+          <a href={% url "about"%}><i class="fas fa-question" ></i><span>about us</span></a>
+          <a href={% url "course"%}><i class="fas fa-book" ></i><span>Courses</span></a>
+          <a href={% url "calendar"%}><i class="fas fa-calendar" ></i><span>Calender</span></a>
+          <a href={% url "contact"%}><i class="fas fa-headset" ></i><span>contact us</span></a>
+
+        </nav>
+    </div>
+
+    <section class="assignlist">
+        <h1 class="heading">Assignment Details</h1>
+        <div class="box-container">
+            <h2 class="assign">Submitted assignments</h2>
+           <div class="complete">
+            {% for assignment in assignments %}
+            <div class="box">
+                <div class="tutor">
+                    <div class="col-1">
+                        <h3 class="title">Assignment {{assignment.id}}</h3>
+                        <p>Title: {{assignment.title}}</p>
+                        <div class="date"><i class="fas fa-calendar-check"></i> Submitted on: <span>date</span></div>
+                        <div id="status"><i class="fas fa-check"></i> Completed</div>
+                        <a href="{% url "view" subject_id=subject.id batch_id=batch.id assignment_id=assignment.id%}" class="inline-btn">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        </div>
+           <h2 class="assign">Pending Assignments</h2>
+           <div class="pending">
+            {% for assignment in assignments %}
+            <div class="box">
+                <div class="tutor">
+                            <div class="col-1">
+                                <h3 class="title">Assignment {{assignment.id}}</h3>
+                                <p>Title: {{assignment.title}}</p>
+                                <div class="date"><i class="fas fa-calendar-check"></i> Deadline: <span>{{assignment.deadline}}</span></div>
+                                <div id="status"><i class="fas fa-warning"></i> Pending</div>
+                                <a href={% url "upload" subject_id=assignment.subject.id batch_id=assignment.batch.id assignment_id=assignment.id%} class="inline-btn">View</a>
+                            </div>
+                </div>
+            </div>
+            {%endfor%}
+           </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+   </footer>
+   <script src="/static/js/Dashboard.js"></script>
+</body>
+
+ </html>

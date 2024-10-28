@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home-section</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="icons">
+        <div id="toggle-btn" class="fas fa-sun"></div>
+    </div>
+    <section class="horizontal">
+        <h1 id="title">Register New!</h1>
+        <form method="POST" action="{% url 'register_student'%}" class="row">
+            {% csrf_token %}
+            {{form}}
+            <div class="col1">
+                <span id="wrong_pass_alert"></span><br>
+                <button type="submit" id="create" class="inline-btn" onclick="wrong_pass_alert()">Submit</button>
+            </div>
+            <div class="text">If Already registered then, click here.
+                <a href={% url "login"%} class="link">Login</a>
+                {{msg}}
+            </div>
+        </form>
+        <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+    </section>
+    <footer class="footer">
+        Copyright &copy; <span>  Made by PICTians</span> |All rights are reserved.!
+    </footer>
+    <script src="/static/js/Home.js"></script>
+</body>
+
+</html>
+
